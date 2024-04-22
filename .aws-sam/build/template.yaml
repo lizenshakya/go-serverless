@@ -30,6 +30,23 @@ Resources:
       Environment:
         Variables:
           PARAM1: VALUE
+  UserFunction:
+    Type: AWS::Serverless::Function
+    Metadata:
+      BuildMethod: go1.x
+      SamResourceId: UserFunction
+    Properties:
+      CodeUri: UserFunction
+      Handler: backend/cmd/lambda/bootstrap
+      Runtime: provided.al2023
+      Architectures:
+      - x86_64
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /user
+            Method: GET
 Outputs:
   HelloWorldAPI:
     Description: API Gateway endpoint URL for Prod environment for First Function

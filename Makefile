@@ -6,5 +6,5 @@ build:
 start: build
 	sam local start-api
 
-clean:
+clean: cdToBackend
 	go mod tidy
